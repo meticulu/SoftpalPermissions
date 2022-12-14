@@ -56,4 +56,24 @@ const ICON_MUTED_BUTTON = new Icon(
   58
 );
 const ICON_UNMUTED_BUTTON = new Icon(
-  require('../assets/images/unmuted_but
+  require('../assets/images/unmuted_button.png'),
+  67,
+  58
+);
+
+const ICON_TRACK_1 = new Icon(require('../assets/images/track_1.png'), 166, 5);
+const ICON_THUMB_1 = new Icon(require('../assets/images/thumb_1.png'), 18, 19);
+const ICON_THUMB_2 = new Icon(require('../assets/images/thumb_2.png'), 15, 19);
+
+const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = Dimensions.get('window');
+const BACKGROUND_COLOR = '#FFF8ED';
+const LIVE_COLOR = '#FF0000';
+const DISABLED_OPACITY = 0.5;
+const RATE_SCALE = 3.0;
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.recording = null;
+    this.sound = null;
+   
