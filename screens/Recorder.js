@@ -76,4 +76,28 @@ export default class App extends React.Component {
     super(props);
     this.recording = null;
     this.sound = null;
-   
+    this.isSeeking = false;
+    this.shouldPlayAtEndOfSeek = false;
+    this.state = {
+      haveRecordingPermissions: false,
+      isLoading: false,
+      isPlaybackAllowed: false,
+      muted: false,
+      soundPosition: null,
+      soundDuration: null,
+      recordingDuration: null,
+      shouldPlay: false,
+      isPlaying: false,
+      isRecording: false,
+      fontLoaded: false,
+      shouldCorrectPitch: true,
+      volume: 1.0,
+      rate: 1.0,
+      query: '',
+      isFetching: false,
+    };
+
+    const RECORDING_OPTIONS_PRESET_LOW_QUALITY = {
+      android: {
+        extension: '.m4a',
+        outputFormat: Audio.RECORDING_OPTION_A
