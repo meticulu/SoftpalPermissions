@@ -120,3 +120,28 @@ export default class App extends React.Component {
 
     this.recordingSettings = JSON.parse(
       JSON.stringify(RECORDING_OPTIONS_PRESET_LOW_QUALITY)
+    );
+  }
+
+  componentDidMount() {
+    (async () => {
+      await Font.loadAsync({
+        'cutive-mono-regular': require('../assets/fonts/CutiveMono-Regular.ttf'),
+      });
+      this.setState({ fontLoaded: true });
+    })();
+    this._askForPermissions();
+  }
+
+  _askForPermissions = async () => {
+    const response = await Permissions.askAsync(Permissions.AUDIO_RECORDING);
+    this.setState({
+      haveRecordingPermissions: response.status === 'granted',
+    });
+  };
+
+  _updateScreenForSoundStatus = status => {
+    if (status.isLoaded) {
+      this.setState({
+        soundDuration: status.durationMillis,
+     
