@@ -186,4 +186,25 @@ export default class App extends React.Component {
     console.log('Deleting file');
     try {
       const info = await FileSystem.getInfoAsync(this.recording.getURI());
-      await FileSystem.deleteAs
+      await FileSystem.deleteAsync(info.uri);
+    } catch (error) {
+      console.log('There was an error deleting recording file', error);
+    }
+  };
+
+  async _stopPlaybackAndBeginRecording() {
+    this.setState({
+      isLoading: true,
+    });
+    if (this.sound !== null) {
+      await this.sound.unloadAsync();
+      this.sound.setOnPlaybackStatusUpdate(null);
+      this.sound = null;
+    }
+    await Audio.setAudioModeAsync({
+      allowsRecordingIOS: true,
+      interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
+      playsInSilentModeIOS: true,
+    });
+    if (this.recording !== null) {
+      this.recording.setO
