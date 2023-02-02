@@ -144,4 +144,28 @@ export default class App extends React.Component {
     if (status.isLoaded) {
       this.setState({
         soundDuration: status.durationMillis,
-     
+        soundPosition: status.positionMillis,
+        shouldPlay: status.shouldPlay,
+        isPlaying: status.isPlaying,
+        rate: status.rate,
+        muted: status.isMuted,
+        volume: status.volume,
+        shouldCorrectPitch: status.shouldCorrectPitch,
+        isPlaybackAllowed: true,
+      });
+    } else {
+      this.setState({
+        soundDuration: null,
+        soundPosition: null,
+        isPlaybackAllowed: false,
+      });
+      if (status.error) {
+        console.log(`FATAL PLAYER ERROR: ${status.error}`);
+      }
+    }
+  };
+
+  _updateScreenForRecordingStatus = status => {
+    if (status.canRecord) {
+      this.setState({
+  
