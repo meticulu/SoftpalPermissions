@@ -168,4 +168,22 @@ export default class App extends React.Component {
   _updateScreenForRecordingStatus = status => {
     if (status.canRecord) {
       this.setState({
-  
+        isRecording: status.isRecording,
+        recordingDuration: status.durationMillis,
+      });
+    } else if (status.isDoneRecording) {
+      this.setState({
+        isRecording: false,
+        recordingDuration: status.durationMillis,
+      });
+      if (!this.state.isLoading) {
+        this._stopRecordingAndEnablePlayback();
+      }
+    }
+  };
+
+  _deleteRecordingFile = async () => {
+    console.log('Deleting file');
+    try {
+      const info = await FileSystem.getInfoAsync(this.recording.getURI());
+      await FileSystem.deleteAs
