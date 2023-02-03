@@ -248,4 +248,22 @@ export default class App extends React.Component {
     this.setState({ isFetching: false });
   };
 
-  async _stopRecordin
+  async _stopRecordingAndEnablePlayback() {
+    this.setState({
+      isLoading: true,
+    });
+    try {
+      await this.recording.stopAndUnloadAsync();
+    } catch (error) {
+      // Nothing -- already unloaded!
+    }
+    const info = await FileSystem.getInfoAsync(this.recording.getURI());
+    console.log(`FILE INFO: ${JSON.stringify(info)}`);
+    await Audio.setAudioModeAsync({
+      allowsRecordingIOS: false,
+      interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
+      playsInSilentModeIOS: true,
+      playsInSilentLockedModeIOS: true,
+    });
+    const { sound, status } = await this.recording.createNewLoadedSoundAsync(
+   
