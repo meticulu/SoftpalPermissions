@@ -207,4 +207,24 @@ export default class App extends React.Component {
       playsInSilentModeIOS: true,
     });
     if (this.recording !== null) {
-      this.recording.setO
+      this.recording.setOnRecordingStatusUpdate(null);
+      this.recording = null;
+    }
+
+    const recording = new Audio.Recording();
+    await recording.prepareToRecordAsync(this.recordingSettings);
+    recording.setOnRecordingStatusUpdate(this._updateScreenForRecordingStatus);
+
+    this.recording = recording;
+    await this.recording.startAsync();
+    this.setState({
+      isLoading: false,
+    });
+  }
+
+  _getTranscription = async () => {
+    this.setState({ isFetching: true });
+    try {
+      const info = await FileSystem.getInfoAsync(this.recording.getURI());
+      console.log(`FILE INFO: ${JSON.stringify(info)}`);
+      const uri = info
