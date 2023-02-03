@@ -227,4 +227,25 @@ export default class App extends React.Component {
     try {
       const info = await FileSystem.getInfoAsync(this.recording.getURI());
       console.log(`FILE INFO: ${JSON.stringify(info)}`);
-      const uri = info
+      const uri = info.uri;
+      const formData = new FormData();
+      formData.append('file', {
+        uri,
+        type: 'audio/x-wav',
+        name: 'speech2text',
+      });
+      const response = await fetch(config.CLOUD_FUNCTION_URL, {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
+      console.log(data);
+      this.setState({ query: data.transcript });
+      console.log(this.state.query);
+    } catch (error) {
+      console.log('There was an error reading file', error);
+    }
+    this.setState({ isFetching: false });
+  };
+
+  async _stopRecordin
