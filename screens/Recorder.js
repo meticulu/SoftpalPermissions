@@ -266,4 +266,31 @@ export default class App extends React.Component {
       playsInSilentLockedModeIOS: true,
     });
     const { sound, status } = await this.recording.createNewLoadedSoundAsync(
-   
+      {
+        isLooping: true,
+        isMuted: this.state.muted,
+        volume: this.state.volume,
+        rate: this.state.rate,
+        shouldCorrectPitch: this.state.shouldCorrectPitch,
+      },
+      this._updateScreenForSoundStatus
+    );
+    this.sound = sound;
+    this.setState({
+      isLoading: false,
+    });
+  }
+
+  _onRecordPressed = () => {
+    if (this.state.isRecording) {
+      this._stopRecordingAndEnablePlayback();
+      this._getTranscription();
+    } else {
+      this._stopPlaybackAndBeginRecording();
+    }
+  };
+
+  _onPlayPausePressed = () => {
+    if (this.sound != null) {
+      if (this.state.isPlaying) {
+        
