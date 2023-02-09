@@ -345,4 +345,26 @@ export default class App extends React.Component {
   };
 
   _onSeekSliderSlidingComplete = async value => {
-    if (th
+    if (this.sound != null) {
+      this.isSeeking = false;
+      const seekPosition = value * this.state.soundDuration;
+      if (this.shouldPlayAtEndOfSeek) {
+        this.sound.playFromPositionAsync(seekPosition);
+      } else {
+        this.sound.setPositionAsync(seekPosition);
+      }
+    }
+  };
+
+  _getSeekSliderPosition() {
+    if (
+      this.sound != null &&
+      this.state.soundPosition != null &&
+      this.state.soundDuration != null
+    ) {
+      return this.state.soundPosition / this.state.soundDuration;
+    }
+    return 0;
+  }
+
+  _getMMSSFromMillis(mil
