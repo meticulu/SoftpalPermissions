@@ -293,4 +293,32 @@ export default class App extends React.Component {
   _onPlayPausePressed = () => {
     if (this.sound != null) {
       if (this.state.isPlaying) {
-        
+        this.sound.pauseAsync();
+      } else {
+        this.sound.playAsync();
+      }
+    }
+  };
+
+  _onStopPressed = () => {
+    if (this.sound != null) {
+      this.sound.stopAsync();
+    }
+  };
+
+  _onMutePressed = () => {
+    if (this.sound != null) {
+      this.sound.setIsMutedAsync(!this.state.muted);
+    }
+  };
+
+  _onVolumeSliderValueChange = value => {
+    if (this.sound != null) {
+      this.sound.setVolumeAsync(value);
+    }
+  };
+
+  _trySetRate = async (rate, shouldCorrectPitch) => {
+    if (this.sound != null) {
+      try {
+        await this.sound.setRateAsync(rate, sh
