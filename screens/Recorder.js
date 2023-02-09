@@ -321,4 +321,28 @@ export default class App extends React.Component {
   _trySetRate = async (rate, shouldCorrectPitch) => {
     if (this.sound != null) {
       try {
-        await this.sound.setRateAsync(rate, sh
+        await this.sound.setRateAsync(rate, shouldCorrectPitch);
+      } catch (error) {
+        //NOTHING
+      }
+    }
+  };
+
+  _onRateSliderSlidingComplete = async value => {
+    this._trySetRate(value * RATE_SCALE, this.state.shouldCorrectPitch);
+  };
+
+  _onPitchCorrectionPressed = async value => {
+    this._trySetRate(this.state.rate, !this.state.shouldCorrectPitch);
+  };
+
+  _onSeekSliderValueChange = value => {
+    if (this.sound != null && !this.isSeeking) {
+      this.isSeeking = true;
+      this.shouldPlayAtEndOfSeek = this.state.shouldPlay;
+      this.sound.pauseAsync();
+    }
+  };
+
+  _onSeekSliderSlidingComplete = async value => {
+    if (th
