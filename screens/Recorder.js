@@ -367,4 +367,27 @@ export default class App extends React.Component {
     return 0;
   }
 
-  _getMMSSFromMillis(mil
+  _getMMSSFromMillis(millis) {
+    const totalSeconds = millis / 1000;
+    const seconds = Math.floor(totalSeconds % 60);
+    const minutes = Math.floor(totalSeconds / 60);
+
+    const padWithZero = number => {
+      const string = number.toString();
+      if (number < 10) {
+        return '0' + string;
+      }
+      return string;
+    };
+    return padWithZero(minutes) + ':' + padWithZero(seconds);
+  }
+
+  _getPlaybackTimestamp() {
+    if (
+      this.sound != null &&
+      this.state.soundPosition != null &&
+      this.state.soundDuration != null
+    ) {
+      return `${this._getMMSSFromMillis(
+        this.state.soundPosition
+      )} / ${this._getMMSSFr
