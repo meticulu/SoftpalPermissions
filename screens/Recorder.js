@@ -390,4 +390,26 @@ export default class App extends React.Component {
     ) {
       return `${this._getMMSSFromMillis(
         this.state.soundPosition
-      )} / ${this._getMMSSFr
+      )} / ${this._getMMSSFromMillis(this.state.soundDuration)}`;
+    }
+    return '';
+  }
+
+  _getRecordingTimestamp() {
+    if (this.state.recordingDuration != null) {
+      return `${this._getMMSSFromMillis(this.state.recordingDuration)}`;
+    }
+    return `${this._getMMSSFromMillis(0)}`;
+  }
+  // eslint-disable-next-line complexity
+  render() {
+    return !this.state.fontLoaded ? (
+      <View style={styles.emptyContainer} />
+    ) : !this.state.haveRecordingPermissions ? (
+      <View style={styles.container}>
+        <View />
+        <Text
+          style={[
+            styles.noPermissionsText,
+            { fontFamily: 'cutive-mono-regular' },
+          ]
