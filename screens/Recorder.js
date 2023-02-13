@@ -412,4 +412,26 @@ export default class App extends React.Component {
           style={[
             styles.noPermissionsText,
             { fontFamily: 'cutive-mono-regular' },
-          ]
+          ]}
+        >
+          You must enable audio recording permissions in order to use this app.
+        </Text>
+        <View />
+      </View>
+    ) : (
+      <ScrollView>
+        <View style={styles.container}>
+          <View
+            style={[
+              styles.halfScreenContainer,
+              {
+                opacity: this.state.isLoading ? DISABLED_OPACITY : 1.0,
+              },
+            ]}
+          >
+            <View />
+            <View style={styles.recordingContainer}>
+              <View />
+              <TouchableHighlight
+                underlayColor={BACKGROUND_COLOR}
+                style={styles.w
