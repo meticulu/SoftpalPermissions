@@ -451,4 +451,22 @@ export default class App extends React.Component {
                     { fontFamily: 'cutive-mono-regular' },
                   ]}
                 >
-                  {this.state.isRecording ? 'LIVE' :
+                  {this.state.isRecording ? 'LIVE' : ''}
+                </Text>
+                <View style={styles.recordingDataRowContainer}>
+                  <Image
+                    style={[
+                      styles.image,
+                      { opacity: this.state.isRecording ? 1.0 : 0.0 },
+                    ]}
+                    source={ICON_RECORDING.module}
+                  />
+                  <Text
+                    style={[
+                      styles.recordingTimestamp,
+                      { fontFamily: 'cutive-mono-regular' },
+                    ]}
+                  >
+                    {this._getRecordingTimestamp()}
+                  </Text>
+              
