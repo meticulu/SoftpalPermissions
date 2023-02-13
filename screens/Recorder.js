@@ -434,4 +434,21 @@ export default class App extends React.Component {
               <View />
               <TouchableHighlight
                 underlayColor={BACKGROUND_COLOR}
-                style={styles.w
+                style={styles.wrapper}
+                onPress={this._onRecordPressed}
+                disabled={this.state.isLoading}
+              >
+                <Image
+                  style={styles.image}
+                  source={ICON_RECORD_BUTTON.module}
+                />
+              </TouchableHighlight>
+              <View style={styles.recordingDataContainer}>
+                <View />
+                <Text
+                  style={[
+                    styles.liveText,
+                    { fontFamily: 'cutive-mono-regular' },
+                  ]}
+                >
+                  {this.state.isRecording ? 'LIVE' :
