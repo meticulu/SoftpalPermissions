@@ -469,4 +469,27 @@ export default class App extends React.Component {
                   >
                     {this._getRecordingTimestamp()}
                   </Text>
-              
+                </View>
+                <View />
+              </View>
+              <View />
+            </View>
+            <View />
+          </View>
+          <View
+            style={[
+              styles.halfScreenContainer,
+              {
+                opacity:
+                  !this.state.isPlaybackAllowed || this.state.isLoading
+                    ? DISABLED_OPACITY
+                    : 1.0,
+              },
+            ]}
+          >
+            <View />
+            <View style={styles.playbackContainer}>
+              <Slider
+                style={styles.playbackSlider}
+                trackImage={ICON_TRACK_1.module}
+   
