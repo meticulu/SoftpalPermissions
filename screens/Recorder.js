@@ -509,4 +509,20 @@ export default class App extends React.Component {
             </View>
             <View
               style={[
-    
+                styles.buttonsContainerBase,
+                styles.buttonsContainerTopRow,
+              ]}
+            >
+              <View style={styles.volumeContainer}>
+                <TouchableHighlight
+                  underlayColor={BACKGROUND_COLOR}
+                  style={styles.wrapper}
+                  onPress={this._onMutePressed}
+                  disabled={
+                    !this.state.isPlaybackAllowed || this.state.isLoading
+                  }
+                >
+                  <Image
+                    style={styles.image}
+                    source={
+                      this.s
