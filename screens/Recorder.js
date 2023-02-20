@@ -492,4 +492,21 @@ export default class App extends React.Component {
               <Slider
                 style={styles.playbackSlider}
                 trackImage={ICON_TRACK_1.module}
-   
+                thumbImage={ICON_THUMB_1.module}
+                value={this._getSeekSliderPosition()}
+                onValueChange={this._onSeekSliderValueChange}
+                onSlidingComplete={this._onSeekSliderSlidingComplete}
+                disabled={!this.state.isPlaybackAllowed || this.state.isLoading}
+              />
+              <Text
+                style={[
+                  styles.playbackTimestamp,
+                  { fontFamily: 'cutive-mono-regular' },
+                ]}
+              >
+                {this._getPlaybackTimestamp()}
+              </Text>
+            </View>
+            <View
+              style={[
+    
