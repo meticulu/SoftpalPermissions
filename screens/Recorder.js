@@ -525,4 +525,19 @@ export default class App extends React.Component {
                   <Image
                     style={styles.image}
                     source={
-                      this.s
+                      this.state.muted
+                        ? ICON_MUTED_BUTTON.module
+                        : ICON_UNMUTED_BUTTON.module
+                    }
+                  />
+                </TouchableHighlight>
+                <Slider
+                  style={styles.volumeSlider}
+                  trackImage={ICON_TRACK_1.module}
+                  thumbImage={ICON_THUMB_2.module}
+                  value={1}
+                  onValueChange={this._onVolumeSliderValueChange}
+                  disabled={
+                    !this.state.isPlaybackAllowed || this.state.isLoading
+                  }
+     
