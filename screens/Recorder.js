@@ -540,4 +540,20 @@ export default class App extends React.Component {
                   disabled={
                     !this.state.isPlaybackAllowed || this.state.isLoading
                   }
-     
+                />
+              </View>
+              <View style={styles.playStopContainer}>
+                <TouchableHighlight
+                  underlayColor={BACKGROUND_COLOR}
+                  style={styles.wrapper}
+                  onPress={this._onPlayPausePressed}
+                  disabled={
+                    !this.state.isPlaybackAllowed || this.state.isLoading
+                  }
+                >
+                  <Image
+                    style={styles.image}
+                    source={
+                      this.state.isPlaying
+                        ? ICON_PAUSE_BUTTON.module
+                       
