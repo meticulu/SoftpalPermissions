@@ -594,4 +594,16 @@ export default class App extends React.Component {
                 style={styles.rateSlider}
                 trackImage={ICON_TRACK_1.module}
                 thumbImage={ICON_THUMB_1.module}
-                value={th
+                value={this.state.rate / RATE_SCALE}
+                onSlidingComplete={this._onRateSliderSlidingComplete}
+                disabled={!this.state.isPlaybackAllowed || this.state.isLoading}
+              />
+              <TouchableHighlight
+                underlayColor={BACKGROUND_COLOR}
+                style={styles.wrapper}
+                onPress={this._onPitchCorrectionPressed}
+                disabled={!this.state.isPlaybackAllowed || this.state.isLoading}
+              >
+                <Text style={[{ fontFamily: 'cutive-mono-regular' }]}>
+                  PC: {this.state.shouldCorrectPitch ? 'yes' : 'no'}
+                </T
