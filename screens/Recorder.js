@@ -556,4 +556,21 @@ export default class App extends React.Component {
                     source={
                       this.state.isPlaying
                         ? ICON_PAUSE_BUTTON.module
-                       
+                        : ICON_PLAY_BUTTON.module
+                    }
+                  />
+                </TouchableHighlight>
+                <TouchableHighlight
+                  underlayColor={BACKGROUND_COLOR}
+                  style={styles.wrapper}
+                  onPress={this._onStopPressed}
+                  disabled={
+                    !this.state.isPlaybackAllowed || this.state.isLoading
+                  }
+                >
+                  <Image
+                    style={styles.image}
+                    source={ICON_STOP_BUTTON.module}
+                  />
+                </TouchableHighlight>
+     
