@@ -573,4 +573,25 @@ export default class App extends React.Component {
                     source={ICON_STOP_BUTTON.module}
                   />
                 </TouchableHighlight>
-     
+              </View>
+              <View />
+            </View>
+            <View
+              style={[
+                styles.buttonsContainerBase,
+                styles.buttonsContainerBottomRow,
+              ]}
+            >
+              <Text
+                style={[
+                  styles.timestamp,
+                  { fontFamily: 'cutive-mono-regular' },
+                ]}
+              >
+                Rate:
+              </Text>
+              <Slider
+                style={styles.rateSlider}
+                trackImage={ICON_TRACK_1.module}
+                thumbImage={ICON_THUMB_1.module}
+                value={th
