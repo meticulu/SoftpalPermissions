@@ -606,4 +606,32 @@ export default class App extends React.Component {
               >
                 <Text style={[{ fontFamily: 'cutive-mono-regular' }]}>
                   PC: {this.state.shouldCorrectPitch ? 'yes' : 'no'}
-                </T
+                </Text>
+              </TouchableHighlight>
+            </View>
+            <View />
+          </View>
+        </View>
+        <Button
+          title="Transcription"
+          style={styles.button}
+          onPress={() =>
+            this.props.navigation.push('Transcription', {
+              transcription: this.state.query,
+            })
+          }
+        />
+      </ScrollView>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  emptyContainer: {
+    alignSelf: 'stretch',
+    backgroundColor: BACKGROUND_COLOR,
+  },
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'spac
