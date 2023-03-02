@@ -659,4 +659,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    alignS
+    alignSelf: 'stretch',
+    minHeight: ICON_RECORD_BUTTON.height,
+    maxHeight: ICON_RECORD_BUTTON.height,
+  },
+  recordingDataContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    minHeight: ICON_RECORD_BUTTON.height,
+    maxHeight: ICON_RECORD_BUTTON.height,
+    minWidth: ICON_RECORD_BUTTON.width * 3.0,
+    maxWidth: ICON_RECORD_BUTTON.width * 3.0,
+  },
+  recordingDataRowContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    minHeight: ICON_RECORDING.height,
+    maxHeight: IC
