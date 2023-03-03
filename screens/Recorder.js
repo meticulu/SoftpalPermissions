@@ -707,4 +707,27 @@ const styles = StyleSheet.create({
   image: {
     backgroundColor: BACKGROUND_COLOR,
   },
-  text
+  textButton: {
+    backgroundColor: BACKGROUND_COLOR,
+    padding: 10,
+  },
+  buttonsContainerBase: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  buttonsContainerTopRow: {
+    maxHeight: ICON_MUTED_BUTTON.height,
+    alignSelf: 'stretch',
+    paddingRight: 20,
+  },
+  playStopContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    minWidth: ((ICON_PLAY_BUTTON.width + ICON_STOP_BUTTON.width) * 3.0) / 2.0,
+    maxWidth: ((ICON_PLAY_BUTTON.width + ICON_STOP_BUTTON.width) * 3.0) / 2.0,
+  },
+  volumeC
