@@ -679,4 +679,32 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     minHeight: ICON_RECORDING.height,
-    maxHeight: IC
+    maxHeight: ICON_RECORDING.height,
+  },
+  playbackContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    minHeight: ICON_THUMB_1.height * 2.0,
+    maxHeight: ICON_THUMB_1.height * 2.0,
+  },
+  playbackSlider: {
+    alignSelf: 'stretch',
+  },
+  liveText: {
+    color: LIVE_COLOR,
+  },
+  recordingTimestamp: {
+    paddingLeft: 20,
+  },
+  playbackTimestamp: {
+    textAlign: 'right',
+    alignSelf: 'stretch',
+    paddingRight: 20,
+  },
+  image: {
+    backgroundColor: BACKGROUND_COLOR,
+  },
+  text
