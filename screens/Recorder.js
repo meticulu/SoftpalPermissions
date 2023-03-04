@@ -730,4 +730,29 @@ const styles = StyleSheet.create({
     minWidth: ((ICON_PLAY_BUTTON.width + ICON_STOP_BUTTON.width) * 3.0) / 2.0,
     maxWidth: ((ICON_PLAY_BUTTON.width + ICON_STOP_BUTTON.width) * 3.0) / 2.0,
   },
-  volumeC
+  volumeContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    minWidth: DEVICE_WIDTH / 2.0,
+    maxWidth: DEVICE_WIDTH / 2.0,
+  },
+  volumeSlider: {
+    width: DEVICE_WIDTH / 2.0 - ICON_MUTED_BUTTON.width,
+  },
+  buttonsContainerBottomRow: {
+    maxHeight: ICON_THUMB_1.height,
+    alignSelf: 'stretch',
+    paddingRight: 20,
+    paddingLeft: 20,
+  },
+  rateSlider: {
+    width: DEVICE_WIDTH / 2.0,
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+  },
+});
